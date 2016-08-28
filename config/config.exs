@@ -11,9 +11,9 @@ config :rumbl, Rumbl.Endpoint,
   root: Path.dirname(__DIR__),
   secret_key_base: "or5wMxTJ5xSCfp7qme5+TwpLBaNvriTm2+O4Yoo8Eoan5rOOww2EezKtOeviEXsQ",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: Rumbl.PubSub,
-           adapter: Phoenix.PubSub.PG2],
-  ecto_repos: [Rumbl.Repo]         
+  pubsub: [name: Rumbl.PubSub, adapter: Phoenix.PubSub.PG2]
+
+config :rumbl, ecto_repos: [Rumbl.Repo]
 
 # Configures Elixir's Logger
 config :logger, :console,
