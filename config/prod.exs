@@ -14,7 +14,8 @@ use Mix.Config
 config :rumbl, Rumbl.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  version: Mix.Project.config[:version]
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -53,13 +54,23 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :rumbl, Rumbl.Endpoint, server: true
+config :rumbl, Rumbl.Endpoint, server: true
 #
 # You will also need to set the application root to `.` in order
 # for the new static assets to be served after a hot upgrade:
 #
-#     config :rumbl, Rumbl.Endpoint, root: "."
+config :rumbl, Rumbl.Endpoint, root: "."
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"
+
+# Configure your database
+config :rumbl, Rumbl.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "andrea",
+  password: "",
+  database: "rumbl_dev",
+  hostname: "localhost",
+  pool_size: 10
+
